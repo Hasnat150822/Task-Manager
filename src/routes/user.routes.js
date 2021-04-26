@@ -1,6 +1,7 @@
 const express = require('express');
 const auth = require('../middleware/auth');
 const User = require('../models/user.model');
+const app = express();
 const routes = express.Router();
 
 routes.get('/users', async (req, res)=>{

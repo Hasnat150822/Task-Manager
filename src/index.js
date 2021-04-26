@@ -2,11 +2,14 @@ const express = require('express');
 const connectDB = require('./db/dbConnection');
 const userRoutes = require('./routes/user.routes');
 var request = require('request');
+const path = require('path')
 
 connectDB();
 const app = express();
 
 const PORT = 3000 || process.env.PORT;
+const publicPath = path.join(__dirname, './public');
+app.use(express.static(publicPath));
 app.use(express.json());
 app.use(userRoutes);
 
