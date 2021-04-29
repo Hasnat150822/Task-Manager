@@ -3,16 +3,13 @@ const express = require('express');
 const connectDB = require('./db/dbConnection');
 const userRoutes = require('./routes/user.routes');
 var request = require('request');
+const cors = require('cors');
 const path = require('path');
 
 dotenv.config();
 connectDB();
 const app = express();
-app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-  });
+app.use(cors());
 const PORT = process.env.PORT || 3000;
 const publicPath = path.join(__dirname, './public');
 app.use(express.static(publicPath));
