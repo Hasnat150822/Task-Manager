@@ -5,15 +5,14 @@ const userRoutes = require('./routes/user.routes');
 var request = require('request');
 const cors = require('cors');
 const path = require('path');
-
+const app = express();
 dotenv.config();
 connectDB();
-const app = express();
-app.use(cors());
 const PORT = process.env.PORT || 3000;
 const publicPath = path.join(__dirname, './public');
 app.use(express.static(publicPath));
 app.use(express.json());
+app.use(cors());
 app.use(userRoutes);
 
 app.listen(PORT, ()=>{
